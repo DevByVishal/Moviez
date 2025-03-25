@@ -1,7 +1,7 @@
 <?php
 
-if($_POST["search"]){
-    $search_name =  $_POST["search"];
+if($_GET["search"]){
+    $search_name =  $_GET["search"];
     $ch = curl_init();
 
     curl_setopt($ch, CURLOPT_URL,"https://www.omdbapi.com/?i=tt3896198&apikey=1bd997ce&s=".$search_name);
