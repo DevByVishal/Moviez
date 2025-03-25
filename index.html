@@ -31,7 +31,7 @@
               </li>
             </ul>
             <form class="d-flex" id="movieForm">
-              <input class="form-control me-2" type="search" name="search" placeholder="Search" aria-label="Search">
+              <input class="form-control me-2" type="search" name="search" id="search_text"placeholder="Search" aria-label="Search">
               <button class="btn btn-outline-success" type="submit">Search</button>
             </form>
           </div>
@@ -44,19 +44,19 @@
 <script>
 
 $("#movieForm").submit(function(e) {
-    var base_url = "https://moviez-red.vercel.app/";
+    var base_url = "https://www.omdbapi.com/?i=tt3896198&apikey=1bd997ce&s=";
     e.preventDefault(); // avoid to execute the actual submit of the form.
 
     var form = $(this);
-    var actionUrl = base_url+"search.php";
+    var actionUrl = base_url+$('#search_text').val();
 
     $.ajax({
         type: "GET",
         url: actionUrl,
-        data: form.serialize(), // serializes the form's elements.
         success: function(data)
         {
-        data = jQuery.parseJSON(data); 
+          console.log(data);
+        // data = jQuery.parseJSON(data); 
         html = "<div class='row'>";
             data.Search.forEach(function(item) {
 
